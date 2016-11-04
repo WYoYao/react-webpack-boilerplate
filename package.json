@@ -1,0 +1,28 @@
+{
+  "name": "leo",
+  "version": "1.0.0",
+  "description": "react_webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WYoYao/react-webpack-boilerplate.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "leo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WYoYao/react-webpack-boilerplate/issues"
+  },
+  "homepage": "https://github.com/WYoYao/react-webpack-boilerplate#readme",
+  "dependencies": {
+    "html-webpack-plugin": "^2.24.1",
+    "open-browser-webpack-plugin": "0.0.3",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
