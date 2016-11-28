@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { render } from 'react-dom';
 import { App } from './containers';
-
-import 'bootstrap/dist/css/bootstrap.css';
+console.log(456);
+console.log(123);
 
 let root = document.getElementById('app');
 render( <App />, root );
