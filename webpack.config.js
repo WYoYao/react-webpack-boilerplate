@@ -1,4 +1,4 @@
-var path=require('path');
+var path = require('path');
 var webpack = require('webpack');
 // 编译后自动打开浏览器
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
@@ -9,35 +9,25 @@ var node_modules = path.resolve(__dirname, 'node_modules');
 // 单独样式文件
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-/**
- * 标识开发环境和生产环境
- * @type {webpack.DefinePlugin}
- */
-var definePlugin = new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
-});
-
-
-module.exports={
-    devSever:{
+module.exports = {
+    devSever: {
         //The webpack-dev-server will serve the files in the current directory, unless you configure a specific content base.
         //Using this configuration, webpack-dev-server will serve the static files in your build folder. It’ll watch your source files, and recompile the bundle whenever they are changed.
         //This modified bundle is served from memory at the relative path specified in publicPath (see API). It will not be written to your configured output directory. Where a bundle already exists at the same URL path, the bundle in memory takes precedence (by default).
         contentBase: './build',
         // a small webpack-dev-server client entry is added to the bundle which refresh the page on change
-        inline:true,
+        inline: true,
         //Enable special support for Hot Module Replacement
-        hot:true,
+        hot: true,
         //Set this as true if you want to access dev server from arbitrary url.
         historyApiFallback: false,
         //Set this if you want to enable gzip compression for assets
-        compress:true,
+        compress: true,
         port: 8080,
         stats: { colors: true }
     },
-    entry:{
-        index:[
+    entry: {
+        index: [
             /**
              * //devServer{hot} 需要
              */
@@ -59,14 +49,14 @@ module.exports={
     resolve: {
         extensions: ['', '.js', '.jsx', '.json'],
         // 提高webpack搜索的速度
-        alias: { }
+        alias: {}
     },
-    devtool:'source-map',
+    devtool: 'source-map',
     'display-error-details': true,
     // 使用externals可以将react分离，然后用<script>单独将react引入
     externals: [],
-    module:{
-        loaders:[
+    module: {
+        loaders: [
             {
                 // 匹配，.js .jsx
                 test: /\.js[x]?$/,
@@ -96,7 +86,6 @@ module.exports={
         //devServer{hot} 需要
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        definePlugin,
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
         new HtmlWebpackPlugin({
             title: 'React Webpack',
@@ -104,8 +93,8 @@ module.exports={
         }),
         new OpenBrowserPlugin({ url: 'http://127.0.0.1:8080' }),
         new ExtractTextPlugin("main.css", {
-          allChunks: true,
-          disable: false
-      }),
+            allChunks: true,
+            disable: false
+        }),
     ]
 }
